@@ -17,29 +17,29 @@ Basicamente, uma chave auto incremental é um número que é incrementado a cada
 Por exemplo:
 
 ```sql
-CREATE TABLE person (
+mysql> CREATE TABLE person (
     entity_id INTEGER PRIMARY KEY auto_increment,
     name VARCHAR(120) NOT NULL
 ) engine=InnoDb;
 ```
 
 ```sql
-INSERT INTO person (name) VALUES ('John Due');
+mysql> INSERT INTO person (name) VALUES ('John Due');
 ```
 
 ```sql
-select * from entity;
+mysql> SELECT * FROM PERSON;
  entity_id | name
 -----------+-----------
          1 | John Due
 ```
 
 ```sql
-INSERT INTO person (name) VALUES ('Mr. Potato');
+mysql> INSERT INTO person (name) VALUES ('Mr. Potato');
 ```
 
 ```sql
-select * from entity;
+mysql> SELECT * FROM PERSON;
  entity_id | name
 -----------+-----------
          1 | John Due
@@ -97,10 +97,36 @@ UUID é uma forma de garantir que sua entidade terá uma identificação única 
 
 ## UUID em MySQL
 
+O MySQL possui uma função chamada [UUID](https://dev.mysql.com/doc/refman/5.7/en/miscellaneous-functions.html#function_uuid), responsável por gerar um UUID. O problema dessa função é que ela gera um valor literal, o que não é interessante quando pensamos em persistência.
 
+```sql
+mysql> SELECT uuid();
++--------------------------------------+
+| uuid()                               |
++--------------------------------------+
+| 6f20d381-27bd-11e7-9247-0242ac110002 |
++--------------------------------------+
+1 row in set (0.00 sec)
+```
+
+```sql
+mysql> DELIMITER //
+CREATE DEFINER=`root`@`localhost` FUNCTION `binary_uuid`() 
+RETURNS binary(16) DETERMINISTIC 
+RETURN UNHEX(REPLACE(UUID(), '-', ''))
+//
+DELIMITER ;
+```
 
 ## UUID na aplicação
 
+### PHP
+
+```php
+<?php
+
+
+```
 
 # Bibliografia
 
