@@ -1,0 +1,30 @@
+version: '2'
+
+services:
+  nginx:
+    image: nginx
+    volumes:
+      - ./:/usr/share/nginx/html/
+      - ./build/etc/nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    working_dir: /usr/share/nginx/html/
+    ports:
+      - "8080:80"
+    depends_on:
+      - php
+      - mysql
+
+  php:
+    image: php:7.1-fpm
+    volumes:
+      - ./:/usr/share/nginx/html/
+    working_dir: /usr/share/nginx/html/
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - db:/var/lib/mysql/
+    env_file: .env
+
+volumes:
+  db:
+    driver: "local"
