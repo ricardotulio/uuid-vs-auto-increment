@@ -240,10 +240,10 @@ console.log(uuid); // 32a4fbed-676d-47f9-a321-cb2f267e2918
 
 # Bibliografia
 
-https://www.clever-cloud.com/blog/engineering/2015/05/20/why-auto-increment-is-a-terrible-idea/
-https://en.wikipedia.org/wiki/Universally_unique_identifier#Random_UUID_probability_of_duplicates
-http://kccoder.com/mysql/uuid-vs-int-insert-performance/
-http://krow.livejournal.com/497839.html
-http://stackoverflow.com/questions/30461895/the-differences-between-int-and-uuid-in-mysql
-https://packagist.org/packages/ramsey/uuid
-https://jaydson.com/uuid-identificador-unico-universal/
+- https://www.clever-cloud.com/blog/engineering/2015/05/20/why-auto-increment-is-a-terrible-idea/
+- https://en.wikipedia.org/wiki/Universally_unique_identifier#Random_UUID_probability_of_duplicates
+- http://kccoder.com/mysql/uuid-vs-int-insert-performance/
+- http://krow.livejournal.com/497839.html
+- http://stackoverflow.com/questions/30461895/the-differences-between-int-and-uuid-in-mysql
+- https://packagist.org/packages/ramsey/uuid
+- https://jaydson.com/uuid-identificador-unico-universal/
