@@ -24,6 +24,6 @@ $config = array(
 $conn = \Doctrine\DBAL\DriverManager::getConnection($config);
 
 $app->get('/v1/person/{id}', new GetPerson(new PersonService($conn)));
-$app->post('/v1/person', new CreatePerson());
+$app->post('/v1/person', new CreatePerson(new PersonService($conn)));
 
 $app->run();

@@ -7,6 +7,7 @@ namespace App\Http\Controller\V1\Person;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use App\Service\PersonService;
+use App\Entity\Person;
 
 class Create
 {
@@ -29,7 +30,15 @@ class Create
         ServerRequestInterface $request,
         ResponseInterface $response
     ): ResponseInterface {
-        $response->write('Criando uma pessoa');
-        return $response;
+        $person = new Person();
+        $person->fromArray($request->getParsedBody());
+
+        $persistedPerson = $this->personService
+            ->persist($person);
+
+        return $response->withJson(
+            $persistedPerson->toArray(),
+            201
+        );
     }
 }

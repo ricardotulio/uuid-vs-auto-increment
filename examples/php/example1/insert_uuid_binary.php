@@ -19,13 +19,6 @@ $createTable = <<<____SQL
         `name` VARCHAR(60) NOT NULL,
         `created` DATETIME NOT NULL DEFAULT NOW()
     ) ENGINE=InnoDb;
-
-    DELIMITER //
-    CREATE FUNCTION `binary_uuid`()
-    RETURNS binary(16) DETERMINISTIC
-    RETURN UNHEX(REPLACE(UUID(), '-', ''))
-    //
-    DELIMITER ;
 ____SQL;
 
 $conn->exec($createTable);

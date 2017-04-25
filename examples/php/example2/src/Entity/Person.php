@@ -9,7 +9,12 @@ namespace App\Entity;
  */
 final class Person
 {
-    use Fillable;
+    use Mapper;
+
+    /**
+     * @var array
+     */
+    private $fillable = [ 'id', 'name', 'created', 'updated' ];
 
     /**
      * @var int
@@ -20,6 +25,16 @@ final class Person
      * @var string
      */
     private $name;
+
+    /**
+     * @var string
+     */
+    private $created;
+
+    /**
+     * @var string
+     */
+    private $updated;
 
     /**
      * Define Person id
@@ -49,9 +64,9 @@ final class Person
      * @param string $name
      * @return App\Entity\Person
      */
-    public function withName($name): self
+    public function withName(string $name): self
     {
-        return $this->name = $name;
+        $this->name = $name;
         return $this;
     }
 
@@ -63,5 +78,43 @@ final class Person
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Define a created
+     *
+     * @param string $created
+     */
+    public function withCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Retrivies created data
+     *
+     * @return string
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param string $updated
+     */
+    public function withUpdated($updated): self
+    {
+        $this->updated = $updated;
+        return $this;
     }
 }

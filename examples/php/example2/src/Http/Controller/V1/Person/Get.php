@@ -27,6 +27,6 @@ class Get
     ): ResponseInterface {
         $personId = $request->getAttribute('id');
         $person = $this->personService->get($personId);
-        return $response->write('Obtendo uma pessoa');
+        return $response->withJson($person->toArray(), 200);
     }
 }

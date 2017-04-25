@@ -9,8 +9,8 @@ class CreatePersonTableMigration extends AbstractMigration
         $table = $this->table('person', array('id' => false));
         $table->addColumn('id', 'binary', array('limit' => '16'))
               ->addColumn('name', 'string')
-              ->addColumn('created', 'datetime')
-              ->addColumn('updated', 'datetime', array('null' => true))
+              ->addColumn('created', 'timestamp', array('default' => 'CURRENT_TIMESTAMP'))
+              ->addColumn('updated', 'timestamp', array('null' => true))
               ->create();
     }
 

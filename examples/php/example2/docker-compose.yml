@@ -14,7 +14,7 @@ services:
       - mysql
 
   php:
-    image: php:7.1-fpm
+    build: ./build/php
     volumes:
       - ./:/usr/share/nginx/html/
     working_dir: /usr/share/nginx/html/
